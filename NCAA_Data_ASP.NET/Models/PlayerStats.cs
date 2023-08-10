@@ -13,7 +13,7 @@ namespace NCAA_Data
 
             string footballEndpoint = $"https://api.collegefootballdata.com/stats/player/" +    //making the API call
             $"season?year={year}&conference={conference}&seasonType={season}&category={statCat}";
-            //Create a list to store player tatistics
+            //Create a list to store player statistics
             List<PlayerStatistics> playerStatsList = new List<PlayerStatistics>();
 
             // Create an HttpClient instance
@@ -51,14 +51,11 @@ namespace NCAA_Data
                             playerStatsList.Add(playerStatistics);
                         }
                     }
-                    else
-                    {
-                        Console.WriteLine($"API Request failed with status code: {response.StatusCode}");
-                    }
+                   
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Error occurred: {ex.Message}");
+                    return null;
                 }
             }
             return playerStatsList;
